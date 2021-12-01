@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<form method='POST' action='/create-post'>
+  <fieldset>
+  <legend>New Post</legend>
+  <!-- TITLE -->
+  <p>
+      <label for='title'>Title</label><br>
+      <input type='text' name='title' />
+  </p>
+  <p>
+      <label for='description'>Description</label><br>
+      <input type='text' name='description' />
+  </p>
+  <p>
+    <label for='goals'>Goals</label><br>
+    <input type='text' name='goals' />
+</p>
+<p>
+  <label for='when'>When</label><br>
+  <input type='text' name='when' />
+</p>
+  </fieldset>
+  <!-- <div class="card text-center">
+    <div class="card-header">
+      Date Posted Here
+    </div>
+    <div class="card-body">
+      <h5 class="card-title fw-bold">{{ post.title }}</h5>
+      <p class="fw-bolder">Description:</p>
+      <p class="card-text">{{ post.description }}</p>
+      <p class="fw-bolder">Goals:</p>
+      <p class="card-text">{{ post.goals }}</p>
+      <p class="fw-bolder">When:</p>
+      <p class="card-text">{{ post.when }}</p>
+      <a href="" class="btn btn-primary">Reply to Post</a>
+      <a href="/{{ post._id }}/delete" class="btn btn-primary">delete</a>
+    </div>
+     -------------------------- poster's profile---------------------------
+    <div class="card-footer text-muted">
+      Location radius
+    </div>
+  </div>
+  <p>
+      <button type='submit'>Submit Post</button>
+  </p>-->
+</form> 
+{% endblock %}
