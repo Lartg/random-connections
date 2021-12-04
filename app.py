@@ -13,38 +13,56 @@ client = MongoClient('mongodb+srv://Admin:kHwGiTilGkc8OEq4@cluster0.anqw0.mongod
 db = client.get_default_database()
 posts = db.posts
 
+
+
+#change / route to login/create account
+#when logged in go to home page!!
+
 @app.route('/')
-def home_page():
-    """Return homepage."""
-    return render_template('home_index.html', posts=posts.find())
+def login_page():
+    return render_template('login.html')
+
+@app.route('/', methods=['POST', 'GET'])
+def login():
+    account = {
+        'username': request.form.get('username')
+    }
+    print(account['username'])
+    return redirect('/home/'+account['username'])
+
+#Home page --------------------------------------------------------------
+@app.route('/home/<string:username>')
+def home_page(username):
+    return render_template('home_index.html', posts=posts.find(), user=username)
 
 # NAVBAR ROUTES ---------------------------------------------------------
-@app.route('/messages')
-def messages():
-    return render_template('messages.html')
+@app.route('/messages/<string:user>')
+def messages(user):
+    return render_template('messages.html', user=user)
 
-@app.route('/view-profile')
-def view_profile():
-    return render_template('view_profile.html')
+@app.route('/view-profile/<string:user>')
+def view_profile(user):
+    return render_template('view_profile.html', user=user)
 
-@app.route('/create-post')
-def create_post():
-    return render_template('create_post.html')
+@app.route('/create-post/<string:user>')
+def create_post(user):
+    return render_template('create_post.html', user=user)
 
 #CRUD --------------------------------------------------------------------
 
 #create post
-@app.route('/create-post', methods=['POST'])
-def submit_new_post():
+@app.route('/create-post/<string:user>', methods=['POST'])
+def submit_new_post(user):
     post = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
         'goals': request.form.get('goals'),
-        'when': request.form.get('when') 
+        'when': request.form.get('when'),
+        'date_posted': datetime.now(),
+        'user': user
     }
     #add date posted
     #add poster identification for update and destroy, worry later YAGNI demo
-    print(datetime.now)
     posts.insert_one(post)
     return redirect('/')
     

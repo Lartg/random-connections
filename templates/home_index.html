@@ -4,7 +4,7 @@
   {% for post in posts %}
   <div class="card text-center">
     <div class="card-header">
-      Date Posted Here
+      {{ post.date_posted }}
     </div>
     <div class="card-body">
       <h5 class="card-title fw-bold">{{ post.title }}</h5>

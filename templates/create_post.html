@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<form method='POST' action='/create-post'>
+<form method='POST' action='/create-post/{{ user }}'>
   <fieldset>
   <legend>New Post</legend>
   <!-- TITLE -->
@@ -15,26 +15,28 @@
   <p>
     <label for='goals'>Goals</label><br>
     <input type='text' name='goals' />
-</p>
-<p>
-  <label for='when'>When</label><br>
-  <input type='text' name='when' />
-</p>
+  </p>
+  <p>
+    <label for='when'>When</label><br>
+    <input type='text' name='when' />
+  </p>
+  <button type='submit'>Submit Post</button>
   </fieldset>
+</form>
   <!-- <div class="card text-center">
     <div class="card-header">
       Date Posted Here
     </div>
     <div class="card-body">
-      <h5 class="card-title fw-bold">{{ post.title }}</h5>
+      <h5 class="card-title fw-bold">title</h5>
       <p class="fw-bolder">Description:</p>
-      <p class="card-text">{{ post.description }}</p>
+      <p class="card-text">description</p>
       <p class="fw-bolder">Goals:</p>
-      <p class="card-text">{{ post.goals }}</p>
+      <p class="card-text">goals</p>
       <p class="fw-bolder">When:</p>
-      <p class="card-text">{{ post.when }}</p>
+      <p class="card-text">when</p>
       <a href="" class="btn btn-primary">Reply to Post</a>
-      <a href="/{{ post._id }}/delete" class="btn btn-primary">delete</a>
+      <a href="" class="btn btn-primary">delete</a>
     </div>
      -------------------------- poster's profile---------------------------
     <div class="card-footer text-muted">
@@ -42,7 +44,7 @@
     </div>
   </div>
   <p>
-      <button type='submit'>Submit Post</button>
+      
   </p>-->
-</form> 
+ 
 {% endblock %}
