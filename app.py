@@ -13,11 +13,6 @@ client = MongoClient('mongodb+srv://Admin:kHwGiTilGkc8OEq4@cluster0.anqw0.mongod
 db = client.get_default_database()
 posts = db.posts
 
-
-
-#change / route to login/create account
-#when logged in go to home page!!
-
 @app.route('/')
 def login_page():
     return render_template('login.html')
@@ -27,7 +22,6 @@ def login():
     account = {
         'username': request.form.get('username')
     }
-    print(account['username'])
     return redirect('/home/'+account['username'])
 
 #Home page --------------------------------------------------------------
@@ -38,17 +32,22 @@ def home_page(username):
 # NAVBAR ROUTES ---------------------------------------------------------
 @app.route('/messages/<string:user>')
 def messages(user):
+    
     return render_template('messages.html', user=user)
 
 @app.route('/view-profile/<string:user>')
 def view_profile(user):
-    return render_template('view_profile.html', user=user)
+    user_posts = []
+    
+    for post in posts.find({'user': user}):
+        user_posts.append(post)
+    return render_template('view_profile.html', user=user, posts=user_posts)
 
 @app.route('/create-post/<string:user>')
 def create_post(user):
     return render_template('create_post.html', user=user)
 
-#CRUD --------------------------------------------------------------------
+#CRUD POSTS --------------------------------------------------------------
 
 #create post
 @app.route('/create-post/<string:user>', methods=['POST'])
@@ -61,21 +60,25 @@ def submit_new_post(user):
         'date_posted': datetime.now(),
         'user': user
     }
-    #add date posted
-    #add poster identification for update and destroy, worry later YAGNI demo
     posts.insert_one(post)
-    return redirect('/')
+    return redirect('/home/'+user)
     
-#read public posts on home page
-#read user posts on profile
-#update posts through profile
-#change delete path so that it is through profile later
-#delete path on post to avoid clutter is neccesary
+#update post
 
-@app.route('/<post_id>/delete')
-def delete_post(post_id):
+#delete post
+@app.route('/<post_id>/delete/<string:user>')
+def delete_post(post_id,user):
     posts.delete_one({'_id': ObjectId(post_id)})
-    return redirect('/')
+    return redirect('/home/'+user)
+
+#CRUD MSGS ---------------------------------------------------------------
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

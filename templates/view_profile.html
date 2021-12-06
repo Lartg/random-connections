@@ -1,4 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
+  <h1>{{ user }}</h1>
 
+  {% for post in posts %}
+  <div class="card text-center">
+    <div class="card-header">
+      {{ post.date_posted }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title fw-bold">{{ post.title }}</h5>
+      <p class="fw-bolder">Description:</p>
+      <p class="card-text">{{ post.description }}</p>
+      <p class="fw-bolder">Goals:</p>
+      <p class="card-text">{{ post.goals }}</p>
+      <p class="fw-bolder">When:</p>
+      <p class="card-text">{{ post.when }}</p>
+      <a href="" class="btn btn-primary">Reply to Post</a>
+      <a href="/{{ post._id }}/delete/{{ user }}" class="btn btn-primary">delete</a>
+    </div>
+    <!-- poster's profile -->
+    <div class="card-footer text-muted">
+      Location radius
+    </div>
+  </div>
+  {% endfor %}
 {% endblock %}
