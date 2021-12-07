@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>{{ user }}</h1>
-
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/static/IMAGES/empty_profile.jpg" class="img-fluid rounded-start">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ user }}</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-header text-center">
+    <h5>View/Edit/Delete Your Posts Below!</h5>
+  </div>
   {% for post in posts %}
   <div class="card text-center">
     <div class="card-header">
@@ -15,7 +30,7 @@
       <p class="card-text">{{ post.goals }}</p>
       <p class="fw-bolder">When:</p>
       <p class="card-text">{{ post.when }}</p>
-      <a href="" class="btn btn-primary">Reply to Post</a>
+      <a href="" class="btn btn-primary">Reply to Post</a><br><br>
       <a href="/{{ post._id }}/delete/{{ user }}" class="btn btn-primary">delete</a>
     </div>
     <!-- poster's profile -->

@@ -1,8 +1,10 @@
 from flask import Flask, render_template
 
 app = Flask(__name__)
+app.secret_key = '123456789012'
+#WTForms = validator
 
-from flask import Flask, render_template, request, abort, url_for, redirect
+from flask import Flask, render_template, request, abort, url_for, redirect, flash
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from werkzeug.utils import redirect
@@ -12,6 +14,7 @@ from datetime import datetime
 client = MongoClient('mongodb+srv://Admin:kHwGiTilGkc8OEq4@cluster0.anqw0.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.get_default_database()
 posts = db.posts
+users = db.users
 
 @app.route('/')
 def login_page():
@@ -19,10 +22,11 @@ def login_page():
 
 @app.route('/', methods=['POST', 'GET'])
 def login():
-    account = {
+    user = {
         'username': request.form.get('username')
     }
-    return redirect('/home/'+account['username'])
+    users.append(user)
+    return redirect('/home/'+user['username'])
 
 #Home page --------------------------------------------------------------
 @app.route('/home/<string:username>')
@@ -61,6 +65,7 @@ def submit_new_post(user):
         'user': user
     }
     posts.insert_one(post)
+    flash('you successfully made a post', 'success')
     return redirect('/home/'+user)
     
 #update post
@@ -73,9 +78,11 @@ def delete_post(post_id,user):
 
 #CRUD MSGS ---------------------------------------------------------------
 
+#CRUD USER ---------------------------------------------------------------
 
-
-
+@app.route('/view-profile/<string:user>', methods=['GET','POST'])
+def edit_profile(user):
+    pass
 
 
 
