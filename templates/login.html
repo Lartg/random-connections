@@ -1,15 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form method='POST' action='/'>
-  <fieldset>
-  <legend>Login</legend>
-  <!-- TITLE -->
-  <p>
-    <label for='username'>Username</label><br>
-    <input type='text' name='username' />
-  </p>
-  <button type='submit'>Login</button>
-  </fieldset>
-</form>
+<div class="container" style="background: none;">
+  <div class="row" style="height: 90vh;">
+    <div class="col d-flex flex-column justify-content-evenly">
+      <h1 class="text-center">Share What You Love</h1>
+      <h1 class="text-center">Try New Hobbies</h1>
+      <h1 class="text-center">Make New Connections</h1>
+    </div>
+    <div class="col d-flex flex-column justify-content-evenly">
+      <form method='POST' action='/'>
+        <fieldset>
+          <div class="card text-center border-0">
+            <div class="card-body">
+              <h5 class="card-title"><legend>Login</legend></h5>
+              <p class="card-text">
+                <label for='username'>Username</label><br>
+                <input type='text' name='username' />
+              </p>
+              <button type='submit' class="btn btn-primary">Login</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>    
+    
+
+
 {% endblock %}

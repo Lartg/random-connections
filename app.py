@@ -25,7 +25,7 @@ def login():
     user = {
         'username': request.form.get('username')
     }
-    users.append(user)
+    # users.append(user)
     return redirect('/home/'+user['username'])
 
 #Home page --------------------------------------------------------------

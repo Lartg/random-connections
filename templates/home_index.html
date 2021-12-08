@@ -1,27 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
 
-  {% for post in posts %}
-  <div class="card text-center">
-    <div class="card-header">
-      {{ post.date_posted }}
+  
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="false">
+    <div class="carousel-inner">
+      <!-- have to init carousel with active class -->
+      <div class="carousel-item active"></div>
+      {% for post in posts %}
+        <div class="carousel-item">   
+          <div class="card text-center">
+            <div class="card-header">
+              {{ post.date_posted }}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold">{{ post.title }}</h5>
+              <p class="fw-bolder">Description:</p>
+              <p class="card-text">{{ post.description }}</p>
+              <p class="fw-bolder">Goals:</p>
+              <p class="card-text">{{ post.goals }}</p>
+              <p class="fw-bolder">When:</p>
+              <p class="card-text">{{ post.when }}</p>
+              <a href="" class="btn btn-primary">Reply to Post</a>
+            </div>
+            <!-- poster's profile -->
+            <div class="card-footer text-muted">
+              Location radius
+            </div>
+          </div>
+        </div>
+      {% endfor %}  
     </div>
-    <div class="card-body">
-      <h5 class="card-title fw-bold">{{ post.title }}</h5>
-      <p class="fw-bolder">Description:</p>
-      <p class="card-text">{{ post.description }}</p>
-      <p class="fw-bolder">Goals:</p>
-      <p class="card-text">{{ post.goals }}</p>
-      <p class="fw-bolder">When:</p>
-      <p class="card-text">{{ post.when }}</p>
-      <a href="" class="btn btn-primary">Reply to Post</a>
-      
-    </div>
-    <!-- poster's profile -->
-    <div class="card-footer text-muted">
-      Location radius
-    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  {% endfor %}
-
 {% endblock %}
