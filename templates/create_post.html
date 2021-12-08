@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
+<h4 class="text-center">The Rule: Be human. <br>
+That is to say, neither machine or pig. <br></h4>
 <form method='POST' action='/create-post/{{ user }}'>
   <fieldset>
-  <legend>New Post</legend>
+  <legend class="text-center">Create Post</legend>
   <!-- TITLE -->
-  <div class="card text-center">
+  <div class="card text-center border-0">
     <div class="card-body">
-      <h5 class="card-title fw-bold">
-        <label for='title'>Title</label><br>
-        <input type='text' name='title'/>  
+      <h5 class="card-title fw-bold ">
+        
+        <input class="create-post-field mt-3" type='text' name='title' placeholder="Title"/>  
       </h5>
-      <p class="fw-bolder"><label for='description'>Description:</label><br></p>
-      <p class="card-text"><input type='text' name='description'/></p>
-      <p class="fw-bolder"><label for='goals'>Goals:</label><br></p>
-      <p class="card-text"><input type='text' name='goals' /></p>
-      <p class="fw-bolder"><label for='when'>When:</label><br></p>
-      <p class="card-text"><input type='text' name='when' /></p>
-      <button type='submit' class="btn btn-primary">Submit Post</button>
+      
+      <p class="card-text "><input class="create-post-field" type='text' name='description' placeholder="Description"/></p>
+      
+      <p class="card-text "><input class="create-post-field" type='text' name='goals' placeholder="Goals"/></p>
+      
+      <p class="card-text"><input class="create-post-field" type='text' name='when' placeholder="When"/></p>
+      <button type='submit' class="btn btn-primary px-5">Share</button>
     </div>
 
   </fieldset>

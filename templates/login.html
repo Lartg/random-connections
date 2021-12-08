@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container" style="background: none;">
-  <div class="row" style="height: 90vh;">
-    <div class="col d-flex flex-column justify-content-evenly">
-      <h1 class="text-center">Share What You Love</h1>
-      <h1 class="text-center">Try New Hobbies</h1>
+<div id="login-container" class="container">
+  <div class="row" style="height: 100vh;">
+    <div class="col d-flex flex-column justify-content-center">
+      <h1 class="text-center my-5">Share What You Love</h1>
+      <h1 class="text-center mb-5">Try New Hobbies</h1>
       <h1 class="text-center">Make New Connections</h1>
     </div>
-    <div class="col d-flex flex-column justify-content-evenly">
+    <div class="col d-flex flex-column justify-content-center">
       <form method='POST' action='/'>
         <fieldset>
-          <div class="card text-center border-0">
-            <div class="card-body">
-              <h5 class="card-title"><legend>Login</legend></h5>
-              <p class="card-text">
+          <div class="ps-5 text-center border-0">
+            
+              <h5 class="ps-5 card-title"><legend>Login</legend></h5>
+              <p class="ps-5 card-text">
                 <label for='username'>Username</label><br>
                 <input type='text' name='username' />
               </p>
-              <button type='submit' class="btn btn-primary">Login</button>
-            </div>
+              <button type='submit' class="ms-5 px-5 btn border border-dark">Login</button>
+            
           </div>
         </fieldset>
       </form>
