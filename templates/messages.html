@@ -1,29 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- <div class="container">
-  <div class="row">
-    conversations
-    <div class="col">
-      Column
-    </div>
-    open message
-    <div class="col">
-      Column
-    </div>
-    displayed information
-    <div class="col">
-      Column
-    </div>
-  </div>
-</div> -->
-<!-- dropdown of users
-select usersthen make a profile route for each dropdown -->
 
 {% for message in messages %}
-  <h1>{{ message.sender }}</h1>
-  <h1>{{ message.reply }}</h1>
-  <h1>{{ message.receiver }}</h1>
-  <h1>-----------------------</h1>
-  <a href="/messages/delete/{{ message._id }}/{{ user.username }}" class="btn btn-primary">Delete</a>
+<div class="card" style="width: 34.5rem;">
+  <div class="card-body">
+    <h5 class="card-title">From: {{ message.sender }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">To: {{ message.receiver }}</h6>
+    {%for reply in message.reply%}
+    <p class="card-text">{{ reply }}</p>
+    {% endfor %}
+    <a href="/messages/delete/{{ message._id }}/{{ user.username }}" class="btn btn-secondary">Delete Message</a>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        Respond
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+
+
+        <form method='POST' action='/messages/{{ user.username }}/{{ message._id }}'>
+          <fieldset>
+          <div class="card text-center border-0">
+            <div class="card-body">
+              <h5 class="card-title fw-bold ">
+                To: {{ message.sender }}
+              </h5>
+              <p class="card-text "><input class="create-post-field" type='text' name='response' placeholder="Response"/></p>
+              <button type='submit' class="btn btn-primary px-5">Send</button>
+            </div>
+        
+          </fieldset>
+        </form>
+      </ul>
+    </div>
+  </div>
+</div>
 {% endfor %}
 {% endblock %}
