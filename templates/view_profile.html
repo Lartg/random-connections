@@ -31,7 +31,8 @@
       <p class="card-text">{{ post.goals }}</p>
       <p class="fw-bolder">When:</p>
       <p class="card-text">{{ post.when }}</p>
-      <a href="/{{ post._id }}/delete/{{ user }}" class="btn btn-primary">delete</a>
+      <a href="/{{ post._id }}/delete/{{ user.username }}" class="btn btn-primary">Delete</a>
+      <a href="/{{ post._id }}/update/{{ user.username }}" class="btn btn-primary">Edit</a>
     </div>
     <div class="card-footer text-muted">
       Location radius

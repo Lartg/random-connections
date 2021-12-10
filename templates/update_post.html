@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h4 class="text-center">The Rule: Be human. <br>
+That is to say, neither machine or pig. <br></h4>
+<form method='POST' action='/{{ post._id }}/update/{{ user.username }}'>
+  <fieldset>
+  <legend class="text-center">Edit Post</legend>
+  <!-- TITLE -->
+  <div class="card text-center border-0">
+    <div class="card-body">
+      <h5 class="card-title fw-bold ">
+        
+        <input class="create-post-field mt-3" type='text' name='title' value="{{ post.title }}"/>  
+      </h5>
+      
+      <p class="card-text "><input class="create-post-field" type='text' name='description' value="{{ post.description }}"/></p>
+      
+      <p class="card-text "><input class="create-post-field" type='text' name='goals' value="{{ post.goals }}"/></p>
+      
+      <p class="card-text"><input class="create-post-field" type='text' name='when' value="{{ post.when }}"/></p>
+      <button type='submit' class="btn btn-primary px-5">Share</button>
+    </div>
+
+  </fieldset>
+</form>
+ 
+{% endblock %}

@@ -68,7 +68,26 @@ def submit_new_post(username):
     return redirect('/home/'+username)
     
 #update post
+@app.route('/<post_id>/update/<string:username>')
+def update_post_form(post_id,username):
+    return render_template('update_post.html', post=posts.find_one(ObjectId(post_id)), user=users.find_one({'username': username}))
 
+@app.route('/<post_id>/update/<string:username>', methods=['GET','POST'])
+def update_post(post_id,username):
+    updated_post = {
+        'title': request.form.get('title'),
+        'description': request.form.get('description'),
+        'goals': request.form.get('goals'),
+        'when': request.form.get('when'),
+        'date_posted': datetime.now(),
+        'user': username
+    }
+    posts.update_one(
+        
+        {'_id': ObjectId(post_id)},
+        {'$set': updated_post}
+    )
+    return redirect('/view-profile/'+username)
 #delete post
 @app.route('/<post_id>/delete/<string:username>')
 def delete_post(post_id,username):
