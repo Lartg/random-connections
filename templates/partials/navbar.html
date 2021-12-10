@@ -1,11 +1,11 @@
 <nav class="d-flex justify-content-center navbar navbar-expand navbar-light bg-light">
   <a class="navbar-brand" href=""></a>
   <div class="navbar-nav">
-    <a class="nav-item nav-link" href="/home/{{ user }}">Home</a>
-    <a class="nav-item nav-link" href="/create-post/{{ user }}">Create Post</a>
+    <a class="nav-item nav-link" href="/home/{{ user.username }}">Home</a>
+    <a class="nav-item nav-link" href="/create-post/{{ user.username }}">Create Post</a>
     <!-- ADD DIVIDERS -->
-    <a class="nav-item nav-link" href="/messages/{{ user }}">Messages</a>
-    <a class="nav-item nav-link" href="/view-profile/{{ user }}">Profile</a>
+    <a class="nav-item nav-link" href="/messages/{{ user.username }}">Messages</a>
+    <a class="nav-item nav-link" href="/view-profile/{{ user.username }}">Profile</a>
     <a class="nav-item nav-link" href="/">Logout</a>
   </div>
 </nav>

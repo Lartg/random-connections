@@ -7,9 +7,10 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{ user }}</h5>
-          <p class="card-text">When users are done being crudded content will be here!</p>
+          <h5 class="card-title">{{ user.username }}</h5>
+          <p class="card-text">{{ user.bio }}</p>
         </div>
+        <a href="/edit-profile/{{ user.username }}/{{ user._id }}" class="btn btn-primary">Edit Profile</a>
       </div>
       <div class="card-header text-center">
         <h5>View/Edit/Delete Your Posts Below!</h5>
