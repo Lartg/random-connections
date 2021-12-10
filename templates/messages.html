@@ -1,22 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
+<!-- <div class="container">
   <div class="row">
-    <!-- conversations -->
+    conversations
     <div class="col">
       Column
     </div>
-    <!-- open message -->
+    open message
     <div class="col">
       Column
     </div>
-    <!-- displayed information -->
+    displayed information
     <div class="col">
       Column
     </div>
   </div>
-</div>
+</div> -->
 <!-- dropdown of users
 select usersthen make a profile route for each dropdown -->
 
+{% for message in messages %}
+  <h1>{{ message.sender }}</h1>
+  <h1>{{ message.reply }}</h1>
+  <h1>{{ message.receiver }}</h1>
+  <h1>-----------------------</h1>
+  <a href="/messages/delete/{{ message._id }}/{{ user.username }}" class="btn btn-primary">Delete</a>
+{% endfor %}
 {% endblock %}

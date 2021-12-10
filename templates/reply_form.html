@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card text-center container">
+  <div class="card-header row ">
+    <p class="text-center">{{ post.date_posted }}</p>
+  </div>
+  <div class="row">
+    <div class="card-body col-md-8">
+      <h5 class="card-title fw-bold">{{ post.title }}</h5>
+      <p class="fw-bolder">Description:</p>
+      <p class="card-text">{{ post.description }}</p>
+      <p class="fw-bolder">Goals:</p>
+      <p class="card-text">{{ post.goals }}</p>
+      <p class="fw-bolder">When:</p>
+      <p class="card-text">{{ post.when }}</p>
+    </div>
+    <div class="card col-md-4 border-0" style="width: 18rem;">
+      <h5 class="card-title">Posted By:</h5>
+      <img src="/static/IMAGES/empty_profile.jpg" class="card-img-top img-fluid rounded-start" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.user.username }}</h5>
+        <p class="card-text">{{ post.user.bio }}</p>
+      </div>
+    </div>
+  </div>
+  <!-- poster's profile -->
+  <div class="card-footer text-muted row">
+    <p class="text-center">Location radius</p>
+  </div>
+</div>
+<h4 class="text-center">The Rule: Be human. <br>
+  That is to say, neither machine or pig. <br></h4>
+<form method='POST' action='/{{ user.username }}/reply/{{ post._id }}'>
+  <fieldset>
+  <!-- TITLE -->
+  <div class="card text-center border-0">
+    <div class="card-body">
+      
+      <p class="card-text"><input class="create-post-field" type='text' name='reply' placeholder="Reply"/></p>
+      <button type='submit' class="btn btn-primary px-5">Send</button>
+    </div>
+
+  </fieldset>
+</form>
+ 
+{% endblock %}

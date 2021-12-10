@@ -24,14 +24,14 @@
                 <p class="card-text">{{ post.goals }}</p>
                 <p class="fw-bolder">When:</p>
                 <p class="card-text">{{ post.when }}</p>
-                <a href="" class="btn btn-primary">Reply to Post</a>
+                <a href="/{{ user.username }}/reply/{{ post._id }}" class="btn btn-primary">Reply to Post</a>
               </div>
               <div class="card col-md-4 border-0" style="width: 18rem;">
                 <h5 class="card-title">Posted By:</h5>
                 <img src="/static/IMAGES/empty_profile.jpg" class="card-img-top img-fluid rounded-start" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{ user.username }}</h5>
-                  <p class="card-text">{{ user.bio }}</p>
+                  <h5 class="card-title">{{ post.user.username }}</h5>
+                  <p class="card-text">{{ post.user.bio }}</p>
                 </div>
               </div>
             </div>
